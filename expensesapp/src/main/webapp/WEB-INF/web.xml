@@ -5,13 +5,13 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>E2eServlet</servlet-name>
-  	<display-name>E2eServlet</display-name>
+  	<servlet-name>ExpenseServlet</servlet-name>
+  	<display-name>ExpenseServlet</display-name>
   	<description></description>
-  	<servlet-class>com.nitesh.e2e.http.E2eServlet</servlet-class>
+  	<servlet-class>com.niaa.expenses.http.ExpenseServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>E2eServlet</servlet-name>
-  	<url-pattern>/api/*</url-pattern>
+  	<servlet-name>ExpenseServlet</servlet-name>
+  	<url-pattern>/api/1.0/*</url-pattern>
   </servlet-mapping>
 </web-app>
