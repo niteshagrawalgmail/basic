@@ -1,0 +1,7 @@
+---
+applications:
+- name: expenseapp
+  host: expenseapp
+  #path: approuter
+  memory: 128M
+  buildpack: nodejs_buildpack

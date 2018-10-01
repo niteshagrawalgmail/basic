@@ -1,0 +1,7 @@
+{
+  "/api/1.0/expenses": {
+    "target": "https://expenses.cfapps.eu10.hana.ondemand.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
