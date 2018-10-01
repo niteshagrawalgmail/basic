@@ -75,8 +75,9 @@ public class Service {
 
         props.put("eclipselink.session-name", sessionName);
         
+        DataSource ds = CloudServices.getDataSource();
                
-        BasicDataSource ds = new BasicDataSource();
+        /*BasicDataSource ds = new BasicDataSource();
 
 		
 		try {
@@ -96,9 +97,9 @@ public class Service {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
         
-        props.put("javax.persistence.nonJtaDataSource", (DataSource)ds);
+        props.put("javax.persistence.nonJtaDataSource", ds);
     	
     	
        // EntityManagerFactory emf = Persistence.createEntityManagerFactory("Eclipselink_JPA");

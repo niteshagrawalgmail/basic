@@ -1,0 +1,15 @@
+---
+applications:
+
+- name: expenses
+  host: expenses
+  instances: 1
+  memory: 1G
+  path: target/expenses.war
+  #buildpack: sap_java_buildpack
+  #env:
+    #TARGET_RUNTIME: tomee
+    #JBP_CONFIG_DEBUG: '{enabled: true}'
+    #SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\" sap-provisioning \"}]"
+  services:
+    - expenses
