@@ -10,6 +10,7 @@
       <!--<th scope="col">Currency</th>-->
       <th scope="col">Category</th>
       <th scope="col">Notes</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
       <!--<td>{{expense.currency}}</td>-->
       <td>{{expense.category}}</td>
       <td>{{expense.notes}}</td>
+      <td><a (click)="deleteExpense(expense)"><i class="far fa-trash-alt"></i></a></td>
     </tr>
   </tbody>
 </table>

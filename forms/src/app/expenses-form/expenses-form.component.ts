@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Expenses } from '../expenses';
 import { ExpenseService } from '../expense.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-expenses-form',
@@ -10,7 +11,7 @@ import { ExpenseService } from '../expense.service';
 })
 export class ExpensesFormComponent implements OnInit {
 
-  constructor(private expenseService : ExpenseService) { }
+  constructor(private spinner: NgxSpinnerService, private expenseService : ExpenseService) { }
 
   categories = ['Shopping' , 'Travel' , 'Food' , 'Other' ];
 
@@ -22,10 +23,22 @@ export class ExpensesFormComponent implements OnInit {
   submitted = false;
 
   onSubmit(){
+
+    /** spinner starts on init */
+    this.spinner.show();
+ 
+    
+
+
     this.submitted = true;
     console.log(JSON.stringify(this.model));
     this.expenseService.addExpense(this.model);
     this.resetData();
+
+    setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+    }, 3000);
   }
 
   ngOnInit() {

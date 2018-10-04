@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Expenses } from '../expenses';
 import { ExpenseService } from '../expense.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-espenses-list',
@@ -10,18 +11,25 @@ import { ExpenseService } from '../expense.service';
 })
 export class EspensesListComponent implements OnInit {
 
-  constructor(private expenseService : ExpenseService) { }
+  constructor(private spinner: NgxSpinnerService, private expenseService : ExpenseService) { }
 
   expenses : Expenses[] = null;
   totalExpense : number = null;
 
   ngOnInit() {
 
+    /** spinner starts on init */
+    this.spinner.show();
+
     this.getExpenses();
 
     // if(this.expenses){
     //   this.totalExpense = this.calculateTotalExpense();
     // }
+    setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+    }, 1000);
     
   }
 
@@ -41,6 +49,17 @@ export class EspensesListComponent implements OnInit {
         sum = sum + i.amount;
     }
     this.totalExpense =  sum;
+  }
+
+  deleteExpense(expense_){
+    
+    // first remove from model then make serve call to delete 
+    for (var i = 0; i < this.expenses.length; i++)
+    if (this.expenses[i].id === expense_.id) { 
+        this.expenses.splice(i, 1);
+        break;
+    }
+    this.calculateTotalExpense();
   }
 
 }
