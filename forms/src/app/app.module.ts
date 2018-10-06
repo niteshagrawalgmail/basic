@@ -10,8 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 
 @NgModule({
@@ -27,6 +25,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     AppRoutingModule,
     NgxSpinnerModule
+
+
     // BrowserAnimationsModule,
     // ToastModule.forRoot() 
   ],
