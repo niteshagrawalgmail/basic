@@ -12,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -35,6 +34,31 @@ public class Service {
         List<Expenses> resultList = (List<Expenses>)query.getResultList();
 		
         return resultList;
+	}
+	
+	public boolean deleteExpense(String id) {
+		
+		boolean isDeleted = false;
+		
+		EntityManagerFactory emf = getEntityManagerFactory();
+	    
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        
+        Expenses expenses = em.find(Expenses.class, Long.parseLong(id));
+        
+        if(expenses != null) {
+        	em.remove(expenses);
+        	isDeleted = true;
+        }
+        
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        
+        return isDeleted;
+        
 	}
 	
 	public List<Expenses> getExpenses(){
@@ -75,9 +99,9 @@ public class Service {
 
         props.put("eclipselink.session-name", sessionName);
         
-        DataSource ds = CloudServices.getDataSource();
+        //DataSource ds = CloudServices.getDataSource();
                
-        /*BasicDataSource ds = new BasicDataSource();
+        BasicDataSource ds = new BasicDataSource();
 
 		
 		try {
@@ -97,7 +121,7 @@ public class Service {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
         
         props.put("javax.persistence.nonJtaDataSource", ds);
     	

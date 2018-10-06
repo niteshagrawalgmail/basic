@@ -2,7 +2,6 @@ package com.niaa.expenses.http;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -74,6 +73,25 @@ public class ExpenseServlet extends HttpServlet {
 		
 		System.out.println(payloaddata);
 		
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		PathInfo pathInfo = PathProcessor.process(req.getPathInfo());
+		String resourceName = pathInfo.getResourceName();
+		IEntityHandler entityHandler = EntityHandlerFactory.getEntityHandler(resourceName);
+		boolean isDeleted = false;
+		if(pathInfo.isCollection()) {
+			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+		}else {
+			isDeleted = entityHandler.delete(pathInfo.getResourceId());
+		}
+		if(isDeleted) {
+			resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+		}else{
+			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	

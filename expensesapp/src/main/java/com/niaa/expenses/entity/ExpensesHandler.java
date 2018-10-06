@@ -12,4 +12,9 @@ public class ExpensesHandler implements IEntityHandler{
 		return new Service().getExpense(resourceId);
 	}
 
+	@Override
+	public boolean delete(String resourceId) {
+		return new Service().deleteExpense(resourceId);
+	}
+
 }
