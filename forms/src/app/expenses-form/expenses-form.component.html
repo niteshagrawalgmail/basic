@@ -2,21 +2,24 @@
 
 
   <h1>Expense</h1>
-  
-  
+
+
   <form (ngSubmit)="onSubmit()" #expensesForm="ngForm">
-    
+
     <div class="form-group">
       <label for="amount">Amount</label>
-      <input type="text" class="form-control" id="amount" required [(ngModel)]="model.amount" name="amount">
+      <input type="number" class="form-control" id="amount" required [(ngModel)]="model.amount" name="amount">
     </div>
 
     <div class="form-group">
       <label for="currency">Currency</label>
-      <input type="text" class="form-control" id="currency" required [(ngModel)]="model.currency" name="currency">
+      <!--<input type="text" class="form-control" id="currency" required [(ngModel)]="model.currency" name="currency">-->
+      <select class="form-control" id="currency" required [(ngModel)]="model.currency" name="currency">
+        <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+      </select>
     </div>
 
-<!--
+    <!--
     <div class="form-group">
       <label for="date">Date</label>
       <input type="text" class="form-control" id="date" required [(ngModel)]="model.date" name="date">

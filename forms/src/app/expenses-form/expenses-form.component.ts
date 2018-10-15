@@ -15,10 +15,8 @@ export class ExpensesFormComponent implements OnInit {
 
   constructor(private spinner: NgxSpinnerService, private expenseService : ExpenseService, private toasterService : ToasterService) { }
 
+  currencies = ['THB', 'INR'];
   categories = ['Shopping' , 'Travel' , 'Food' , 'Other' ];
-
-
-  
 
   model = new Expenses(0, 0.0, 17091982, "THB", "Choose Category", "");
 
@@ -44,14 +42,6 @@ export class ExpensesFormComponent implements OnInit {
   }
 
   resetData(){
-    this.model = new Expenses(0 , 0.0, 17091982, "THB", "Choose Category", "");
+     this.model = new Expenses(0 , 0.0, 17091982, "THB", "Choose Category", "");
   }
-
-
- 
-
-  // get diagnostic(){
-  //   return JSON.stringify(this.model);
-  // }
-
 }

@@ -32,6 +32,11 @@ addExpense (expense: Expenses): Observable<HttpResponse<Object>>  {
   return this.http.post(this.expenseUrl, expense, { observe: 'response' } );
 }
 
+deleteExpense (id: number): Observable<HttpResponse<Object>> {
+  const url = `${this.expenseUrl}/${id}`;
+  return this.http.delete(url, { observe: 'response' });
+}
+
 /** GET expenses from the server */
 getExpenses (): Observable<Expenses[]> {
   return this.http.get<Expenses[]>(this.expenseUrl)

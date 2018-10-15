@@ -1,28 +1,37 @@
 <div class="container">
   <h1>Expenses List</h1>
-  <button type="button" class="btn btn-primary btn-lg pull-right">{{totalExpense}}</button>
+
+  <div class="row">
+    <div class="col-12">
+
+      <button class="btn btn-info btn-space btn-lg float-right">{{totalExpense_THB}} THB</button>
+       <button class="btn btn-primary btn-space btn-lg float-right">{{totalExpense_INR}} INR</button>
+    </div>
+  </div>
+<div class="table-responsive">
   <table class="table table-striped css-serial">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Date</th>
-      <th scope="col">Amount</th>
-      <!--<th scope="col">Currency</th>-->
-      <th scope="col">Category</th>
-      <th scope="col">Notes</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let expense of expenses">
-      <td></td>
-      <td>{{expense.date}}</td>
-      <td>{{expense.amount}} {{expense.currency}}</td>
-      <!--<td>{{expense.currency}}</td>-->
-      <td>{{expense.category}}</td>
-      <td>{{expense.notes}}</td>
-      <td><a (click)="deleteExpense(expense)"><i class="far fa-trash-alt"></i></a></td>
-    </tr>
-  </tbody>
-</table>
-</div> 
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <!--<th scope="col">Currency</th>-->
+        <th scope="col">Category</th>
+        <th scope="col">Notes</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expense of expenses">
+        <td></td>
+        <td>{{expense.date}}</td>
+        <td>{{expense.amount}} {{expense.currency}}</td>
+        <!--<td>{{expense.currency}}</td>-->
+        <td>{{expense.category}}</td>
+        <td>{{expense.notes}}</td>
+        <td><a (click)="deleteExpense(expense)"><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
