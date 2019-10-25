@@ -1,12 +1,23 @@
 version: "3.7"
 services:
-  front-envoy:
+  ingress:
     build:
       context: .
-      dockerfile: Dockerfile    
+      dockerfile: Dockerfile-ingress    
     expose:
-      - "10000"
-      - "9901"
+      - "10004"
+      - "9905"
     ports:
-      - "10000:10000"
-      - "9901:9901"
+      - "10004:10000"
+      - "9905:9901"
+  egress:
+    build:
+      context: .
+      dockerfile: Dockerfile-egress    
+    expose:
+      - "10003"
+      - "9904"
+    ports:
+      - "10003:10000"
+      - "9904:9901"
+      
